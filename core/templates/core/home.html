@@ -1,0 +1,514 @@
+
+  {% extends 'base.html' %}
+
+  {% block title %}
+  Home - Oculare
+  {% endblock %}
+
+  {% block unico %}
+  {% load static %}
+
+   <!-- Importa o Ionicons em formato ES Module (para navegadores modernos) -->
+   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+   <!-- Importa o Ionicons em formato não-module (para navegadores mais antigos) -->
+   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+   
+   <!-- Importa o jQuery Slim 3.3.1 (versão mais leve do jQuery sem alguns utilitários como AJAX) -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   
+   <!-- Importa o Popper.js 1.14.3 (usado para posicionar elementos como dropdowns e tooltips) -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   
+   <!-- Importa o Bootstrap 4.1.3 JS (necessário para interações e componentes dinâmicos do Bootstrap) -->
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+   
+   <!-- Importa o Bootstrap 4.1.3 CSS (estilos base do framework Bootstrap) -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--simbolo para ficar em cima-->
+    <link rel="icon" type="image/png" href="{% static 'img/home/logo2.png' %}">
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+<!--Link SwiperJS script-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<!--Link do CSS feito-->
+<link rel="stylesheet" href="{% static 'CSS/home.css' %}">
+{% endblock %}
+{% block content %}
+
+<img class="img_inicio" src="{% static "img/home/clinica.jpeg" %}" alt="">
+
+
+    
+    <div class="cima esquerda animacao_esquerda">
+    <p class="slogan1 esquerda" id="fonte_grande">SUA VISÃO MERECE O MELHOR</p>
+    <p><h1 class="slogan2 esquerda" id="fonte_grande"> Toda atenção <br>especial que seus <br>olhos precisam</h1> </p>
+    <button class="btslogan esquerda"  href=/Exames/exames.html >Serviços</button>
+    </div>
+   <div class="quadrado"></div>
+    
+    <!--Parte do Quem Somos-->
+    <div class="branco"></div>
+
+<div class="Quem_Somos">
+
+  <img src="{% static "img/home/medico2.png" %}" alt="Medico" class="medico esquerda">
+<div class="letras_ao_lado direita">
+    <h3 class="QS direita" id="fonte_grande">Quem Somos</h3>
+    <h1 class="missao direita" id="fonte_grande">Nossa Missão com a<br>oftalmologia</h1>
+    
+    <p>
+        A Ótica Oculare acredita que a visão é mais do que apenas enxergar. É a janela para o mundo, para os sonhos e para as emoções. Nossa missão é cuidar dos olhos com o mesmo carinho que cuidamos dos nossos, oferecendo um atendimento humanizado e personalizado, buscando o bem-estar integral de cada cliente.
+    </p>
+
+</div>
+</div>
+<div class="azul"></div>
+<!-- Terceira Parte - Dados -->
+<div class="tudados">
+  <hr class="linhas">
+
+    <div class="Dados">
+    <div class="anos esquerda subida">
+        <div>
+        <h1>7+</h1> 
+        <ion-icon name="time-outline"></ion-icon>
+        </div>
+        <p>Anos de <br> experiência</p>
+    </div>
+    
+    <div class="clientes esquerda subida">
+        <div>
+            <h1>60.700+</h1> 
+            <ion-icon name="happy-outline"></ion-icon>
+        </div>
+        <p>Clientes satisfeitos</p>
+    </div>
+    
+    <div class="consultas direita subida">
+        <div>
+            <h1>94.600+</h1> 
+            <ion-icon name="medkit-outline"></ion-icon>
+        </div>
+        <p>Consultas realizadas</p>
+    </div>
+    
+    <div class="membros direita subida">
+        <div>
+            <h1>30+</h1> 
+            <ion-icon name="people-outline"></ion-icon>
+        </div>
+        <p>Corpo Clínico</p>
+    </div>
+    
+    </div>
+    <hr class="linhas">
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Parte dos Exames - Olhos -->
+<div class="bloco01"></div>
+
+<img src="{% static "img/home/foto_cirurgias.jpeg" %}" alt="" class="medico_cirurgia">
+<div class="tudo_servico">
+
+<div class="olhos">
+
+    <div class="centro2"> 
+        <h1 id="fonte_grande direita" style="color: rgb(0, 0, 0);">Conheça alguns dos serviços da Oculare</h1>    
+    </div>
+    <section>
+        <details>
+            <summary id="Glaucoma direita">Glaucoma</summary>
+            <div class="conteudo">
+            <p>O glaucoma é uma doença ocular grave que, se não tratada, pode levar à perda permanente da visão. Na Oculare, oferecemos soluções cirúrgicas avançadas para controlar o glaucoma e proteger a sua visão.
+                <br><br>
+            A cirurgia de glaucoma visa reduzir a pressão intraocular, o principal fator de risco para a progressão da doença. Dependendo do caso, utilizamos técnicas modernas e minimamente invasivas, como a trabeculectomia e implantes de drenagem, proporcionando mais segurança e eficácia no tratamento.
+            </p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Catarata</summary>
+            <div class="conteudo">
+            <p>A catarata é uma condição ocular que causa a opacificação do cristalino, resultando em visão embaçada e perda gradual da visão. Na Oculare, oferecemos procedimentos cirúrgicos modernos para restaurar sua visão com segurança e eficácia.
+                <br><br>
+            A cirurgia de catarata é um procedimento simples e altamente eficaz. Durante a cirurgia, o cristalino opaco é removido e substituído por uma lente intraocular artificial, permitindo que você volte a enxergar com clareza. Nossos oftalmologistas experientes utilizam técnicas avançadas e tecnologia de ponta para garantir resultados excelentes e uma recuperação rápida.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Miopia</summary>
+            <div class="conteudo">
+            <p>A miopia é uma condição comum que afeta a visão à distância, dificultando a visualização de objetos distantes. Na Oculare, oferecemos tratamentos cirúrgicos modernos e eficazes para corrigir a miopia, ajudando você a enxergar com clareza.
+                <br><br>
+            A cirurgia refrativa, como o LASIK e a PRK, é uma solução popular para quem deseja reduzir ou eliminar a dependência de óculos ou lentes de contato. Nossos oftalmologistas altamente qualificados utilizam tecnologia de ponta para garantir resultados precisos e seguros.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Pterígio</summary>
+            <div class="conteudo">
+            <p>O pterígio é uma condição ocular caracterizada pelo crescimento de um tecido fibrovascular sobre a córnea, que pode causar irritação, vermelhidão e, em casos mais avançados, comprometer a visão. Na Oculare, oferecemos tratamentos cirúrgicos eficazes para remover o pterígio e proteger a saúde dos seus olhos.
+                <br><br>
+            A cirurgia de pterígio é um procedimento seguro que remove o tecido anormal, restaurando a superfície ocular e prevenindo complicações futuras. Nossos oftalmologistas especializados utilizam técnicas modernas que minimizam o risco de recorrência e garantem uma recuperação tranquila.</p>
+            </div>
+        </details>
+    </section>
+    <button class="btn-servicos">Veja outros Exames</button>
+
+</div>
+</div>
+
+ <!--Carrossel Convenios-->
+<div class="Convenios">
+  <div class="centro_convenio"> 
+      <h1>Convênios aceitos</h1>    
+      </div>
+  <div class="carrossel_convenios">
+      
+     <div class="slides swiper">
+         <div class="car1">
+             <div class="cardlista swiper-wrapper">
+     
+                 <div class="card_item swiper-slide" style="width: 22vw;">
+                     <img src="{% static "img/home/prevent1.png" %}" alt="Matheus" class="imagem_convenio">
+                    
+                 </div>
+     
+                 
+     
+                 <div class="card_item swiper-slide" style="width: 22vw;">
+                     <img src="{% static "img/home/unimed.png" %}" alt="Antonio Fonseca" class="imagem_convenio">
+                     
+                 </div>
+     
+                 <div class="card_item swiper-slide" style="width: 22vw;">
+                     <img src="{% static "img/home/bradesco1.png" %}" alt="Maria de Lurdes" class="imagem_convenio">
+                     
+                 </div>
+     
+                 <div class="card_item swiper-slide" style="width: 22vw;">
+                     <img src="{% static "img/home/notredame.png" %}" alt="Gabriel Barbosa" class="imagem_convenio">
+                    
+                 </div>
+     
+                 <div class="card_item swiper-slide" style="width: 22vw;">
+                     <img src="{% static "img/home/amil.png" %}" alt="Ana Braga" class="imagem_convenio">
+                     
+                 </div>
+     
+                 <div class="card_item swiper-slide" style="width: 22vw;">
+                     <img src="{% static "img/home/sul1.png" %}" alt="Matheus" class="imagem_convenio">
+              
+                 </div> 
+             </div>
+     
+           
+     
+     </div>
+     
+     
+     </div>
+     </div>
+ </div>
+ 
+
+<!-- Parte dos Lugares -->
+<!--Font Awesome CDN-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+<div class="container">
+
+  <div class="slide">
+      <div class="item" style="background-image: url(https://i.ibb.co/LdCY5Xh/image.png);">                <div class="content">
+              <div class="fundo">
+              <div class="name" id="fonte_grande">Sala <br>de Cirurgia</div>
+              <div class="des">A sala de cirurgia da Oculare é equipada com a mais avançada tecnologia oftalmológica, proporcionando segurança e precisão em cada procedimento. Projetada para garantir conforto e tranquilidade, o ambiente é controlado para atender aos mais altos padrões de qualidade e higiene.</div>
+              </div>
+          </div>
+      </div>
+      <div class="item" style="background-image: url(https://i.ibb.co/Y3krS34/clinica.jpg);">                <div class="content">
+              
+              <div class="fundo">
+              <div class="name" id="fonte_grande">Recepção</div>
+              <div class="des">Na Oculare, a sua experiência começa com um atendimento acolhedor e atencioso desde o momento em que você entra. Nossa recepção foi projetada para oferecer conforto e tranquilidade, proporcionando um ambiente agradável e organizado, onde cada detalhe é pensado para o seu bem-estar.
+                 </div>
+              </div>
+          </div>
+      </div>
+      <div class="item" style="background-image: url(https://i.ibb.co/j5qBYLk/image.png);">
+          <div class="content">
+             <div class="fundo maior">
+              <div class="name" id="fonte_grande" style="font-size: 3.6vw;">Consultórios</div>
+              <div class="des">Os consultórios da Oculare são projetados para garantir conforto, privacidade e eficiência em cada consulta. Equipados com tecnologia de ponta, nossos ambientes oferecem o que há de mais moderno em oftalmologia, permitindo diagnósticos precisos e tratamentos avançados.</div>
+              </div>
+          </div>
+      </div>
+      <div class="item" style="background-image: url(https://i.ibb.co/R71gH0n/image.png);">
+          <div class="content">
+              <div class="fundo">
+              <div class="name" id="fonte_grande">Fachada</div>
+              <div class="des">A fachada da Oculare reflete o nosso compromisso com a excelência desde o primeiro contato. Com uma fachada moderna e elegante, a nossa clínica é facilmente reconhecida pela logomarca destacada, que simboliza confiança e inovação em oftalmologia.</div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+  <div class="button">
+      <button class="prev">❮</button>
+      <button class="next">❯</button>
+  </div>
+
+</div>
+
+
+
+<script>
+    const swiper = new Swiper('.car1', {
+        grabCursor: true,
+        spaceBetween: 7,
+    
+        
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          dynamicBullets:true,
+        },
+      
+        autoplay: {
+            delay: 3000, // 3000 ms = 3 seconds
+            disableOnInteraction: false, // continua a autoplay mesmo após interação
+          },
+    
+        //Pontos Responsivos
+        breakpoints: {
+            0:{
+            slidesPerView: 1
+            },
+            768:{
+                slidesPerView: 2
+                },
+            1024:{
+            slidesPerView: 3
+            },
+        }
+      });
+    
+      //Botão
+      //Parte dos Serviços
+
+      class Accordion {
+  constructor(el) {
+    this.el = el;
+    this.summary = el.querySelector('summary');
+    this.conteudo = el.querySelector('.conteudo');
+
+    this.animation = null;
+    this.isClosing = false;
+    this.isExpanding = false;
+
+    this.summary.addEventListener('click', (e) => this.onClick(e));
+  }
+
+  static closeAllAccordions(currentAccordion) {
+    document.querySelectorAll('details').forEach((el) => {
+      if (el !== currentAccordion && el.open) {
+        el.querySelector('.conteudo').style.opacity = '0'; // Esconde o conteúdo visualmente
+        el.querySelector('.conteudo').style.transition = 'opacity 0.4s ease'; // Transição suave de opacidade
+
+        const startHeight = `${el.offsetHeight}px`;
+        const endHeight = `${el.querySelector('summary').offsetHeight}px`;
+
+        el.animate({
+          height: [startHeight, endHeight]
+        },  {
+          duration: 400,
+          easing: 'ease-out'
+        }).onfinish = () => {
+          el.open = false;
+          el.style.height = '';
+        };
+      }
+    });
+  }
+
+  onClick(e) {
+    e.preventDefault();
+
+    const wasOpen = this.el.open;
+
+    Accordion.closeAllAccordions(this.el);
+
+    if (wasOpen) {
+      this.shrink();
+    } else {
+      this.open();
+    }
+  }
+
+  shrink() {
+    this.isClosing = true;
+    this.conteudo.style.opacity = '0'; // Esconde o conteúdo visualmente
+    this.conteudo.style.transition = 'opacity 0.1s ease'; // Transição suave de opacidade
+
+    const startHeight = `${this.el.offsetHeight}px`;
+    const endHeight = `${this.summary.offsetHeight}px`;
+
+    if (this.animation) {
+      this.animation.cancel();
+    }
+
+    this.animation = this.el.animate({
+      height: [startHeight, endHeight]
+    }, {
+        
+      duration: 400,
+      easing: 'ease-out'
+    } 
+);
+
+    this.animation.onfinish = () => this.onAnimationFinish(false);
+    this.animation.oncancel = () => this.isClosing = false;
+  }
+
+  open() {
+    this.conteudo.style.display = 'block'; 
+    this.conteudo.style.opacity = '1'; 
+    this.conteudo.style.transition = 'opacity 0.1s ease'; 
+
+    this.el.style.height = `${this.el.offsetHeight}px`;
+    this.el.open = true;
+    window.requestAnimationFrame(() => this.expand());
+  }
+
+  expand() {
+    this.isExpanding = true;
+    const startHeight = `${this.el.offsetHeight}px`;
+    const endHeight = `${this.summary.offsetHeight + this.conteudo.offsetHeight}px`;
+
+    if (this.animation) {
+      this.animation.cancel();
+    }
+
+    this.animation = this.el.animate({
+      height: [startHeight, endHeight]
+    }, {
+      duration: 400,
+      easing: 'ease-out'
+    });
+
+    this.animation.onfinish = () => this.onAnimationFinish(true);
+    this.animation.oncancel = () => this.isExpanding = false;
+  }
+
+  onAnimationFinish(open) {
+    this.el.open = open;
+    this.animation = null;
+    this.isClosing = false;
+    this.isExpanding = false;
+    this.el.style.height = this.el.style.overflow = '';
+
+    if (!open) {
+      this.conteudo.style.display = 'none'; // Certifica-se de que o conteúdo não é clicável quando fechado
+    }
+  }
+}
+
+document.querySelectorAll('details').forEach((el) => {
+  new Accordion(el);
+});
+
+// Carrossel do lugar
+    let next = document.querySelector('.next');
+let prev = document.querySelector('.prev');
+
+// Função para mover o item para a frente
+function moveNext() {
+    let items = document.querySelectorAll('.item');
+    document.querySelector('.slide').appendChild(items[0]);
+}
+
+// Função para mover o item para trás
+function movePrev() {
+    let items = document.querySelectorAll('.item');
+    document.querySelector('.slide').prepend(items[items.length - 1]);
+}
+
+// Evento para os botões de navegação
+next.addEventListener('click', moveNext);
+prev.addEventListener('click', movePrev);
+
+
+
+
+
+</script>
+
+<!--Animação-->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const elementos = document.querySelectorAll('.direita');
+
+    const observador = new IntersectionObserver(entradas => {
+      entradas.forEach(entrada => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('mostrar');
+          observador.unobserve(entrada.target);
+        }
+      });
+    });
+
+    elementos.forEach(elemento => {
+      observador.observe(elemento);
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const elementos = document.querySelectorAll('.esquerda');
+
+    const observador = new IntersectionObserver(entradas => {
+      entradas.forEach(entrada => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('mostrar');
+          observador.unobserve(entrada.target);
+        }
+      });
+    });
+
+    elementos.forEach(elemento => {
+      observador.observe(elemento);
+    });
+  });
+
+  let indiceSlide = 0;
+  let slides = document.getElementsByClassName("slide2");
+  let totalSlides = slides.length;
+  mostrarSlides();
+
+  function mostrarSlides() {
+    for (let i = 0; i < totalSlides; i++) {
+      slides[i].classList.remove("ativo");
+    }
+
+    indiceSlide++;
+    if (indiceSlide > totalSlides) {
+      indiceSlide = 1;
+    }
+    slides[indiceSlide - 1].classList.add("ativo");
+    setTimeout(mostrarSlides, 3000);
+  }
+
+  $('.carousel').carousel({
+    interval: 1000
+  });
+</script>
+
+{% endblock %}

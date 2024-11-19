@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Recepçao - Oculare
+{% endblock %}
+
+{% block unico %}
+{% load static %}
+<link rel="stylesheet" href="{%static 'css/login_recepcao.css'%}">
+{% endblock %}
+{% block content %}
+<center>
+<div class="login-container">
+    <h2>Login Recepção</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Usuário</label>
+        <input type="text" name="username" id="username" required>
+        <label for="password">Senha</label>
+        <input type="password" name="password" id="password" required>
+        <button type="submit">Entrar</button>
+    </form>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+</center>
+{% endblock %}

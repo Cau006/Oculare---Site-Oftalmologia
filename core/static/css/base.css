@@ -1,0 +1,433 @@
+  /*Header acima*/
+  html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+   overflow-y:scroll;
+}
+*{
+    max-width: 101vw;
+    margin: 0;
+    padding: 0;
+    font-family: "Schibsted Grotesk", sans-serif;
+}
+html, body {
+    height: 100%; /* Define 100% de altura para a tela */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.781);
+    width: 95vw;
+    height: 7vw;
+    box-shadow: 0 0 0.01vw 0 rgba(0, 0, 0, 0.1);
+    position: fixed; 
+    top: 2vw;
+    left: 2vw;
+    right: 0;
+    z-index: 1000;
+    transition: 0.5s ease;
+    border-radius: 0.5vw;
+}
+
+header.scrolled {
+    background-color: rgb(255, 255, 255); /* Menu opaco ao rolar */
+    box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.1); /* Sombra adicionada ao rolar */
+    border-bottom: #333 solid 0.1vw;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+}
+
+.opç {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+.logo {
+    font-size: 1.7vw;
+    margin-left: 1vw;
+}
+.logando{
+    position: absolute;
+    right: 6vw;
+}
+.home{
+    margin-left: 0vw;
+}
+li {
+    position: relative;
+    float: left;
+    margin-left: 2vw;
+}
+
+li a {
+    color: rgb(0, 0, 0);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    margin-left: 2vw;
+    font-size: 1.5vw;
+}
+
+.options {
+    position: absolute;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.342);
+    min-width: 12.25vw;
+    box-shadow: 0 0.03vw 0.07vw rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 0.5vw;
+}
+
+.options a {
+    color: rgb(255, 255, 255);
+    margin-top: 1vw;
+    text-decoration: none;
+    margin-bottom: 1vw;
+}
+
+li.dropdown:hover .options {
+    display: block;
+}
+
+header a {
+    color: rgb(15, 15, 15);
+    margin-top: 2.5vw;
+    text-decoration: none;
+}
+
+header a:hover {
+    text-decoration: underline;
+    color: rgb(58, 94, 141);
+}
+
+/* Parte de deslogar e usuario */
+
+.usuario-container {
+    position: relative;
+    display: inline-block;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Nome do usuário */
+.usuario-nome {
+    font-size: 1.5vw; /* Texto responsivo */
+    font-weight: bold;
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 1vw 2vw; /* Espaçamento dinâmico */
+    border-radius: 2vw; /* Bordas arredondadas */
+    box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.2); /* Sombra adaptativa */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: absolute;
+    right: 1vw;
+}
+
+.usuario-nome:hover {
+    background-color: #007bff;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Formulário de logout */
+.sair-form {
+    display: none;
+    position: absolute;
+    top: 100%; /* Aparece abaixo do nome */
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 1vw;
+    z-index: 10;
+}
+
+/* Botão "Sair" */
+.sair {
+    font-size: 1vw;
+    font-weight: bold;
+    color: white;
+    background-color: #dc3545;
+    border: none;
+    padding: 0.8vw 1.6vw;
+    border-radius: 2vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    position: absolute;
+    right: 2.2vw;
+    top: 2.5vw;
+}
+
+.sair:hover {
+    background-color: #c82333;
+    box-shadow: 0 0.4vw 1vw rgba(0, 0, 0, 0.3); /* Sombra proporcional */
+}
+
+/* Exibir o botão ao passar o mouse */
+.usuario-container:hover .sair-form {
+    display: block;
+}
+
+svg {
+    width: 3vw;
+    height: 2vw;
+}
+
+/* Fim do logar */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.hamburger span {
+    width: 5vw;
+    height: 0.5vw;
+    background: #fff;
+    margin: 0.5vw;
+    transition: 0.3s;
+}
+
+/* Menu padrão (desktop) */
+.menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu ul {
+    display: flex;
+}
+
+.menu ul li {
+    margin: 0 1.5vw;
+}
+
+.dropdown .options {
+    display: none;
+}
+
+/* Exibir o menu para telas maiores */
+@media (min-width: 768px) {
+    .menu {
+        display: flex;
+    }
+}
+
+/* Menu estilo hambúrguer em dispositivos móveis */
+@media (max-width: 767px) {
+    .hamburger {
+        display: flex;
+        margin-top: 1vw;
+        margin-left: 0.5vw;
+        color: #000000;
+    }
+    .logo_img{
+        margin-right: 20vw;
+    }
+    .menu {
+        position: fixed;
+        top: 0;
+        left: -100vw;
+        width: 60vw;
+        height: 100vh;
+        background-color: #333;
+        flex-direction: column;
+        transition: left 0.3s ease;
+        padding-top: 15vw;
+    }
+
+    .menu.active {
+        left: 0;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu ul li {
+        margin: 5vw 0;
+        text-align: center;
+        color: #fff;
+    }
+
+    .nav{
+        color: #fff;
+    }
+}
+/* Seta */
+#backToTop {
+    width: 4vw; 
+    height: 5vw; 
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 3vw; 
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    text-decoration: none; 
+}
+
+
+
+#backToTopText {
+    display: block;
+    color: #000000;
+    font-size: 1vw;
+    margin-top: 0vw;
+}
+
+#backToTopContainer {
+    position: fixed;
+    top: 47vw; 
+    right: 2vw;
+    text-align: center;
+    z-index: 1000;
+    display: none;
+}
+
+
+/* Footer */
+
+footer {
+    width: 2vw;
+    height: 20vw;
+    position: relative;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    bottom: 0;
+}
+
+.espac {
+    width: auto;
+    height: 1vw;
+}
+
+.geral {
+    margin-top: 1vw;
+    margin-left: 2vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    margin-bottom: 0.2vw;
+    font-size: 3vw;
+    color: white;
+}
+
+.geralapp {
+    display: flex;
+    margin-top: 0.15vw;
+}
+
+.app {
+    display: flex;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    margin-right: 0.2vw;
+}
+
+i {
+    font-size: 1vw;
+}
+
+.escrit {
+    margin-right: 0.1vw;
+    cursor: pointer;
+    color: white;
+    font-size: 1vw;
+}
+
+.direitos {
+    margin-top: 0.18vw;
+    font-size: 1vw;
+    color: rgb(255, 255, 255);
+}
+
+.line {
+    width: auto;
+    height: 0.03vw;
+    background-color: rgba(255, 255, 255, 0.875);
+    margin-top: 0.05vw;
+    margin-bottom: 0.01vw;
+}
+
+.vertical {
+    width: 0.5vw;
+    height: 11vw;
+    background-color: rgba(255, 255, 255, 0.875);
+    margin-top: 2.5vw;
+}
+.header{
+    background-color: rgba(0, 0, 0, 0.875);
+    width: 0.25vw;
+    height: 5vw;
+    margin-top: 1vw;
+    margin-left: 5vw;
+}
+.segunda{
+    margin-right: -0.2vw;
+}
+.logo_img{
+    height: 5vw;
+    border-radius: 4vw;
+    position: absolute;
+    margin-top: 1vw;
+    left: 5vw;
+}
+.logo_img:hover{
+    cursor: pointer;
+}
+.logo{
+    position: absolute;
+    left: 20vw;
+}
+iframe {
+    width: 30vw;
+    bottom: 0;
+    height: 15vw;
+    margin-right: 2vw;
+}
+
+/* Animação chegando de lado */
+.animacao_esquerda {
+    position: relative;
+    left: -30vw;  /* Começa fora da tela */
+    opacity: 0;    /* Começa invisível */
+    transition: left 1.5s ease, opacity 1s ease;
+}
+
+.animacao_esquerda.show {
+    left: 0vw;  /* Quando a classe 'show' for adicionada, o item vai aparecer */
+    opacity: 1;
+}
+
+/* Animação de surgimento */
+
+.surgimento {
+    opacity: 0;
+    transform: scale(0.8);  /* Começa ligeiramente reduzido */
+    transition: opacity 1.5s ease, transform 1.5s ease; /* Anima opacidade e escala */
+}
+
+.surgimento.visivel {
+    opacity: 1;
+    transform: scale(1);  /* Volta ao tamanho original */
+}

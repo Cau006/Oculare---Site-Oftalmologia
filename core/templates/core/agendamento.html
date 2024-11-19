@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Agendamento - Oculare
+{% endblock %}
+
+{% block unico %}
+{% load static %}
+<link rel="stylesheet" href="{%static 'css/agend.css'%}">
+{% endblock %}
+{% block content %}
+    
+ 
+<div class="agendamento surgimento">
+    <div class="fundo">
+        <div class="seus_agendamentos">
+            <h2>Seus Agendamentos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Período</th>
+                        <th>Serviço</th>
+                        <th>Observações</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for agendamento in agendamentos %}
+                        <tr>
+                            <td>{{ agendamento.data }}</td>
+                            <td>{{ agendamento.periodo }}</td>
+                            <td>{{ agendamento.servico }}</td>
+                            <td>{{ agendamento.detalhes_extras }}</td>
+                            <td>{{ agendamento.status }}</td>
+                        </tr>
+
+                    
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="no-agendamentos">
+                            <img src="{% static "img/Agendamento/robo.png" %}"  alt="Imagem de consulta" class="imagem-consulta">
+                            
+                            <p>Nenhum agendamento encontrado</p>
+                            <span>Parece que você ainda não tem nenhum agendamento. Que tal marcar a sua consulta agora?</span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button class="botao-agendar" onclick="mostrarFormulario()">Agendar Consulta</button>
+
+        </div>
+        
+        <h1 class="titulo_agen agenda" >Agendar</h1>
+        <span class="voltar agenda" onclick="voltarParaAgendamentos()">⬅ Voltar</span>
+        <form class="agenda form" method="POST" action="{% url 'agendamento' %}">
+            {% csrf_token %}
+            
+            <input type="text" class="nom" name="nom" value="{{ request.session.usuario_nome }}" placeholder="Nome:" required readonly>
+            <input type="text" id="inputCPF" required pattern="\d{11}" title="O CPF deve conter exatamente 11 números" maxlength="11" oninput="this.value = this.value.replace(/\D/g, '')" name="cpf" class="cpf" id="nom" placeholder="CPF:" value="{{ request.session.usuario_cpf}}" readonly>
+            <input type="text" class="tel" id="tel" name="tel" placeholder="Telefone:" required pattern="\d{10,11}" title="O telefone deve conter 10 ou 11 dígitos" maxlength="11" oninput="this.value = this.value.replace(/\D/g, '')">
+            <input type="email" class="email" id="email" placeholder="E-mail:" value="{{request.session.usuario_email}}" required name="email" readonly>
+            <input type="date" class="data" id="data" placeholder="Data:" required name="data">
+            
+            <select name="médico" class="selec_todos selec" id="médicos" required>
+                <option value="" disabled selected>Selecione o serviço</option>
+                <option value="Cirurgia">Cirurgia</option>
+                <option value="Consulta">Consulta</option>
+                <option value="Exames de vista">Exames de vista</option>
+                <option value="Terapia visual">Terapia visual</option>
+                <option value="Avaliação pré-operatória">Avaliação pré-operatória</option>
+                <option value="Acompanhamento pós-operatório">Acompanhamento pós-operatório</option>
+                <option value="Prescrição de óculos e lentes de contato">Prescrição de óculos e lentes de contato</option>
+                <option value="Tratamento de doenças oculares">Tratamento de doenças oculares</option>
+                <option value="Orientação para higiene ocular">Orientação para higiene ocular</option>
+            </select>
+            
+            <select name="periodo" class="selec_todos selec2" id="perio" required>
+                <option value="" disabled selected>Selecione um período</option>
+                <option value="Manhã">Manhã</option>
+                <option value="Tarde">Tarde</option>
+                <option value="Noite">Noite</option>
+            </select>
+            
+            <select name="convênio" class="selec3" id="conv" required>
+                <option value="" disabled selected>Selecione seu convênio</option>
+                <option value="Bradesco">Bradesco</option>
+                <option value="Amil">Amil</option>
+                <option value="Unimed">Unimed</option>
+                <option value="Prevent Senior">Prevent Senior</option>
+                <option value="NotreDame Intermédica">NotreDame Intermédica</option>
+                <option value="Sul América">Sul América</option>
+            </select>
+            
+            <textarea class="des" id="des" placeholder="Observações" name="des"></textarea>
+            <center>
+                <div class="box-3">
+                    <button type="submit" class="btn agendar" style="color: black;">Agendar</button>
+                </div>
+            </center>
+        </form>
+    </div>
+</div>
+
+<script>
+ function mostrarFormulario() {
+        // Esconde a seção de "Seus Agendamentos"
+        document.querySelector('.seus_agendamentos').style.display = 'none';
+
+        // Mostra os elementos com a classe "agenda"
+        document.querySelectorAll('.agenda').forEach(element => {
+            element.style.display = 'block';
+        });
+    }
+
+    function voltarParaAgendamentos() {
+        // Mostra a seção de "Seus Agendamentos"
+        document.querySelector('.seus_agendamentos').style.display = 'block';
+
+        // Esconde os elementos com a classe "agenda"
+        document.querySelectorAll('.agenda').forEach(element => {
+            element.style.display = 'none';
+        });
+    }
+
+// Script para configurar os valores de min e max dinamicamente
+    const inputData = document.getElementById("data");
+    
+    // Define a data mínima como amanhã
+    const today = new Date();
+    today.setDate(today.getDate() + 1);
+    const minDate = today.toISOString().split("T")[0];
+    
+    // Define a data máxima para o final do ano de 2025
+    const maxDate = "2025-12-31";
+    
+    // Aplica as restrições de data mínima e máxima
+    inputData.min = minDate;
+    inputData.max = maxDate;
+    </script>
+{% endblock %}

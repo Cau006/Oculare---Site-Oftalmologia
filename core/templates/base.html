@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Document{% endblock %}</title>
+    {% load static %}
+
+    <!-- CSS geral (base) -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <!-- Link para Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" type="image/png" href="{% static 'img/home/logo2.png' %}">
+    <!-- Bloco para CSS específico de cada página -->
+    {% block unico %}
+    {% endblock %}
+</head>
+
+<body>
+    <center>
+        <header id="main-header">
+            <div class="opç">
+                <img href="{% url 'home' %}" src="{% static 'img/Base/logo.PNG' %}" alt="" class="logo_img">
+                <!-- Ícone de hambúrguer -->
+                <div class="hamburger" onclick="menu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+    
+                <!-- Menu -->
+                <nav class="menu" id="menu">
+                    <ul>
+                        <li><a href="{% url 'home' %}" class="home">Home</a></li>
+                        <li class="dropdown">
+                            <a class="servicos">Serviços</a>
+                            <div class="options" id="options">
+                                <a href="{% url 'exames' %}">Exames</a>
+                                <a href="{% url 'cirurgias' %}">Cirurgias</a>
+                            </div>
+                        </li>
+                        <li><a href="{% url 'agendamento' %}" class="agend">Agendamento</a></li>
+                        <div class="logando">
+                        <li>
+                            {% if request.session.usuario_nome %}
+                                <div class="usuario-container">
+                                    <h1 class="usuario-nome" onclick="toggleSair()"> 
+                                        {% if request.session.usuario_nome|length > 7 %}
+                                            {{ request.session.usuario_nome.split.0|slice:":4" }}!
+                                        {% else %}
+                                            {{ request.session.usuario_nome.split.0 }}!
+                                        {% endif %}
+                                    </h1>
+                                    <form method="post" action="{% url 'logout' %}" class="sair-form">
+                                        {% csrf_token %}
+                                        <button type="submit" class="sair">Sair</button>
+                                    </form>
+                                </div>
+                            {% elif request.user.is_authenticated %}
+                                <div class="usuario-container">
+                                    <h1 class="usuario-nome" onclick="toggleSair()">
+                                        {{ request.user.username.split.0 }}!
+                                    </h1>
+                                    <form method="post" action="{% url 'logout' %}" class="sair-form">
+                                        {% csrf_token %}
+                                        <button type="submit" class="sair">Sair</button>
+                                    </form>
+                                </div>
+
+                            {% else %}
+                                <a href="{% url 'login' %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                                    </svg>
+                                </a>
+                            {% endif %}
+                        </li>
+                    </div>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </center>    
+
+    <!-- Conteúdo específico de cada página -->
+    {% block content %}
+
+
+    {% endblock %}
+    <div id="backToTopContainer">
+        
+        <a href="#" id="backToTop" title="Voltar ao topo">↑</a>
+        <span id="backToTopText">Voltar ao topo</span>
+    </div>
+    
+    <footer>
+        <div class="espac"></div>
+
+        <div class="geral">
+            <div class="aps">
+                <p class="title">Oculare</p>
+                <div class="escrit">
+                    Oculare Brasil, <br>
+                    Serviços Clínicos e Oftalmológicos <br>
+                    Av. Marechal Argolo Ferrão, 464 <br>
+                    02139-000 São Paulo (SP), Brasil
+                </div>
+                <div class="geralapp">
+                    <div class="app">
+                        <i class="bi bi-instagram"></i>
+                        <p class="escrit">Instagram</p>
+                    </div>
+                    <div class="app">
+                        <i class="bi bi-whatsapp"></i>
+                        <p class="escrit">Whatsapp</p>
+                    </div>
+                    <div class="app">
+                        <i class="bi bi-facebook"></i>
+                        <p class="escrit">Facebook</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vertical"></div>
+            <div class="sobren">
+                <div class="title">Sobre Nós</div>
+                <p class="escrit">Na Oculare, cuidamos da saúde dos seus olhos com excelência e tecnologia avançada.
+                    Nossa equipe dedicada oferece diagnósticos precisos e tratamentos personalizados em um ambiente acolhedor. Venha descobrir como podemos ajudar a manter sua visão saudável.
+                </p>
+            </div>
+            <div class="vertical segunda"></div>
+            <div class="loc">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.9662695813868!2d-46.57660954386719!3d-23.49772439751406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5f67b6be6757%3A0x66c33cb3a8aa0cdf!2sAv.%20Marechal%20Argolo%20Ferr%C3%A3o%2C%20464%20-%20Vila%20Sabrina!5e0!3m2!1spt-BR!2sbr!4v1727804604064!5m2!1spt-BR!2sbr"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <center>
+            <p class="direitos">Oculare 2024 © Todos os Direitos Reservados</p>
+        </center>
+        <div class="line"></div>
+    </footer>
+<script>
+    function maisOpcoes() {
+    const options = document.getElementById("options");
+    options.style.display = options.style.display === "block" ? "none" : "block";
+}
+
+// Fecha as opções se o usuário clicar fora delas
+window.onclick = function(event) {
+    if (!event.target.matches('a')) {
+        const options = document.getElementById("options");
+        if (options.style.display === 'block') {
+            options.style.display = 'none';
+        }
+    }
+}
+
+  // Código para o header descer junto
+  window.addEventListener('scroll', function() {
+    var header = document.getElementById('main-header');
+    if (window.scrollY > 5) { // Quantidade de rolagem para ativar o efeito
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Mostrar a seta ao rolar a página
+window.onscroll = function() {
+    let backToTopContainer = document.getElementById("backToTopContainer");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        backToTopContainer.style.display = "block";
+    } else {
+        backToTopContainer.style.display = "none";
+    }
+};
+
+document.getElementById("backToTop").addEventListener("click", function(event) {
+    event.preventDefault();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+});
+
+
+// Animação chegando de lado
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Seleciona todos os itens que devem ser animados
+    var animacoes_esquerda = document.querySelectorAll('.animacao_esquerda');
+
+    // Cria o Intersection Observer
+    var observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+            // Quando o item estiver visível na tela, adiciona a classe 'show'
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);  // Remove a observação depois que o item já animou
+            }
+        });
+    }, { threshold: 0.1 });  // Quando 10% do item estiver visível
+
+    // Aplica o observer a cada item
+    animacoes_esquerda.forEach(function(animacao_esquerda) {
+        observer.observe(animacao_esquerda);
+    });
+});
+
+
+// Animação Surgimento
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Seleciona todos os elementos com a classe 'surgimento'
+    var elementos = document.querySelectorAll('.surgimento');
+
+    // Cria o Intersection Observer
+    var observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+            // Quando o elemento estiver visível, adiciona a classe 'visivel'
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visivel');
+                observer.unobserve(entry.target);  // Para de observar após a animação
+            }
+        });
+    }, { threshold: 0.1 });  // Quando 10% do elemento estiver visível
+
+    // Aplica o observer a cada elemento com a classe 'surgimento'
+    elementos.forEach(function(elemento) {
+        observer.observe(elemento);
+    });
+});
+
+//hambuerguer
+function menu() {
+            document.getElementById("menu").classList.toggle("active");
+        }
+
+
+
+// Logar e deslogar
+
+// Alterna a exibição do botão "Sair"
+function toggleSair() {
+    const sairForm = document.querySelector('.sair-form');
+    if (sairForm) {
+        sairForm.classList.toggle('active');
+    }
+}
+
+// Fecha o botão "Sair" ao clicar fora
+document.addEventListener('click', function (event) {
+    const container = document.querySelector('.usuario-container');
+    const sairForm = document.querySelector('.sair-form');
+    
+    if (container && sairForm && !container.contains(event.target)) {
+        sairForm.classList.remove('active');
+    }
+});
+
+</script>
+</body>
+
+</html>
+

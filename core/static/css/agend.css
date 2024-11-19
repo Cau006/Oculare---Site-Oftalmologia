@@ -1,0 +1,200 @@
+
+.agendamento{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+.fundo {
+    display: inline-block flex;
+    padding: 5vw;
+    font-size: 1vw;
+    background: linear-gradient(120deg, #00c6ff, #0072ff); /* Gradiente azul */
+    width: 40%;
+    height: calc(auto + 4vw);
+    border-radius: 2vw;
+    margin-top: 10vw;
+    box-shadow: 0 0.04vw 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+
+}
+.agendamento h1{
+    font-size: 2vw;
+}
+.agendamento input{
+    font-size: 0.9vw;
+}
+.agendamento select{
+    font-size: 0.9vw;
+}
+
+/* Título */
+.titulo_agen {
+    font-size: 2.5vw;
+    text-align: center;
+    margin-top: 2vw;
+    color: #333;
+}
+
+/* Botão Voltar */
+.voltar {
+    display: inline-block;
+    font-size: 1.2vw;
+    margin: 1vw 0;
+    color: #007BFF;
+    cursor: pointer;
+}
+
+.voltar:hover {
+    text-decoration: underline;
+}
+
+/* Campos do formulário */
+.agenda.form input,
+.agenda.form select,
+.agenda.form textarea {
+    width: calc(100% - 2vw);
+    margin-bottom: 1.5vw;
+    padding: 1vw;
+    border: 0.1vw solid #ccc;
+    border-radius: 0.5vw;
+    font-size: 1.2vw;
+}
+
+/* Botão de agendar */
+.btn.agendar {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 1vw 3vw;
+    font-size: 1.2vw;
+    border: none;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn.agendar:hover {
+    background-color: #0056b3;
+}
+
+/* Caixa centralizada */
+.box-3 {
+    text-align: center;
+}
+
+/* Textarea */
+textarea.des {
+    height: 8vw;
+    resize: none;
+}
+
+footer{
+    position: relative;
+    margin-top: 2vw;
+}
+#backToTop {
+    display: none;
+}
+#backToTopText{
+    display: none;
+}
+
+
+.seus_agendamentos{
+    display:block;
+}
+.agenda{
+    display: none;
+
+}
+.form {
+    border-radius: 0.4vw;
+}
+.seus_agendamentos {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0.5vw;
+    border-radius:0.08vw;
+}
+
+.seus_agendamentos h2 {
+    font-size: 2vw;
+    margin-top: -2vw;
+    margin-bottom: 0.5vw;
+    color: #333;
+}
+
+.seus_agendamentos table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.seus_agendamentos th, .seus_agendamentos td {
+    padding: 1vw 1vw;
+    font-size: 1vw;
+    text-align: left;
+}
+
+.seus_agendamentos th {
+    background-color: #25658a;
+    color: white;
+    font-weight: bold;
+}
+
+
+.seus_agendamentos td {
+    color: #fffdfd;
+}
+
+.no-agendamentos {
+    text-align: center;
+    color: #666;
+    padding: 2vw;
+    font-style: italic;
+}
+
+.no-agendamentos img {
+    width: 10vw;
+    margin-bottom: 1.5vw;
+    border-radius: 0.5vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.no-agendamentos p {
+    font-weight: bold;
+    font-size: 1.8vw;
+    margin: 1vw 0;
+    color: #333;
+}
+
+.no-agendamentos span {
+    display: block;
+    margin-bottom: 1.4vw;
+    color: #888;
+}
+
+.botao-agendar {
+    background-color: #25658a;
+    color: white;
+    padding: 0.7vw 2vw;
+    font-size: 1.2vw;
+    border: none;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s
+}
+
+.voltar{
+    position: relative;
+    top: -4vw;
+}
+.voltar:hover{
+    cursor: pointer;
+}

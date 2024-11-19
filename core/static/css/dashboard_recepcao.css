@@ -1,0 +1,151 @@
+/* Reset básico */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.dashboard-container {
+    position: relative;
+    max-width: 90vw; /* Limite de largura */
+    margin: 2vw auto; /* Centralizar */
+    padding: 2vw; /* Espaçamento interno */
+    background-color: #ffffff;
+    border-radius: 0.5vw; /* Bordas arredondadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    top: 10vw;
+    flex: 1;
+
+}
+
+
+/* Formulário de filtros *//* Formulário de filtros */
+.filter-form {
+    width: 80vw;
+    margin: 2vw auto;
+    padding: 2vw;
+    border-radius: 1vw;
+}
+
+.filter-form .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vw;
+}
+
+.filter-form .form-group > div {
+    flex: 1 1 calc(33.33% - 2vw);
+    min-width: 20vw;
+}
+
+.filter-form label {
+    display: block;
+    margin-bottom: 0.5vw;
+    font-weight: bold;
+    font-size: 1vw;
+}
+
+.filter-form input,
+.filter-form select {
+    width: 90%;
+    padding: 1vw;
+    border: 0.1vw solid #ccc;
+    border-radius: 0.5vw;
+    font-size: 1vw;
+}
+
+.filter-form .form-actions {
+    margin-top: 2vw;
+    text-align: center;
+}
+
+.filter-form .form-actions button,
+.filter-form .form-actions a {
+    padding: 1vw 2vw;
+    border: none;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1vw;
+}
+
+.filter-form .form-actions button {
+    background-color: #007BFF;
+    color: white;
+}
+
+.filter-form .form-actions a {
+    background-color: #6c757d;
+    color: white;
+    margin-left: 1vw;
+}
+
+
+
+.dashboard-container h1 {
+    text-align: center;
+    font-size: 2vw; /* Tamanho da fonte do título ajustado */
+    color: #333;
+    margin-bottom: 2vw; /* Espaçamento abaixo do título */
+}
+
+table {
+    width: 100%; /* Largura total */
+    border-collapse: collapse; /* Remover espaçamento entre células */
+}
+
+th, td {
+    padding: 1vw; /* Espaçamento interno das células ajustado */
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Linha inferior */
+}
+
+th {
+    background-color: #007bff; /* Cor de fundo do cabeçalho */
+    color: white; /* Cor do texto */
+    font-size: 1.5vw; /* Tamanho da fonte do cabeçalho ajustado */
+    text-align: center;
+}
+
+td {
+    font-size: 1.2vw; /* Tamanho da fonte das células ajustado */
+    text-align: center;
+}
+
+.dashboard-container form button {
+    padding: 0.4vw 1.2vw; /* Espaçamento interno do botão ajustado */
+    font-size: 1.5vw; /* Tamanho da fonte do botão ajustado */
+    color: white; /* Cor do texto do botão */
+    background-color: #46c4d5; /* Cor de fundo do botão */
+    border: none; /* Remover borda */
+    border-radius: 0.5vw; /* Bordas arredondadas */
+    cursor: pointer; /* Mão ao passar o mouse */
+    transition: background-color 0.3s; /* Transição suave */
+    width: 10vw;
+    margin-top: 1vw;
+}
+
+.dashboard-container form button:hover {
+    background-color: #238794; /* Cor de fundo ao passar o mouse */
+}
+
+.dashboard-container form {
+    display: inline; /* Formulários na mesma linha */
+    margin-right: 1vw; /* Espaçamento entre os formulários */
+}
+/* Define altura total para html e body */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* A wrapper (content) ocupa todo o espaço disponível */
+
+
+/* Estilo do footer */
+footer {
+    margin-top: 20vh;
+}

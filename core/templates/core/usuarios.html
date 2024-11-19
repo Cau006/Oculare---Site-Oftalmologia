@@ -1,0 +1,20 @@
+<div  class="container">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>email</th>
+            <th>Senha</th>
+        </tr>
+        {% for cadastro in usuarios%}
+        <tr>
+            <th>{{cadastro.id}}</th>
+            <th>{{cadastro.nome}}</th>
+            <th>{{cadastro.cpf}}</th>
+            <th>{{cadastro.email}}</th>
+            <th>{{cadastro.senha}}</th>
+        </tr>
+        {% endfor%}
+    </table>
+</div>

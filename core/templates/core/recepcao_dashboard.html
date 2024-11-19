@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Recepção Dashboard - Oculare
+{% endblock %}
+
+{% block unico %}
+{% load static %}
+<link rel="stylesheet" href="{%static 'css/dashboard_recepcao.css'%}">
+{% endblock %}
+{% block content %}
+<div class="dashboard-container">
+    <center><h1>Agendamentos</h1></center>
+
+    <!-- Formulário de filtros -->
+    <!-- Formulário de filtros -->
+<form method="GET" action="{% url 'recepcao_dashboard' %}" class="filter-form">
+    <div class="form-group">
+        <div>
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data">
+        </div>
+        <div>
+            <label for="cliente">Cliente:</label>
+            <input type="text" id="cliente" name="cliente" placeholder="Nome do Cliente">
+        </div>
+        <div>
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="">Todos</option>
+                <option value="Pendente">Pendente</option>
+                <option value="Confirmado">Confirmado</option>
+                <option value="Remarcado">Remarcado</option>
+                <option value="Recusado">Recusado</option>
+            </select>
+        </div>
+        <div>
+            <label for="servico">Serviço:</label>
+            <select id="servico" name="servico">
+                <option value="">Tipo de Serviço</option>
+                <option value="Cirurgia">Cirurgia</option>
+                <option value="Consulta">Consulta</option>
+                <option value="Exames de vista">Exames de vista</option>
+                <option value="Terapia visual">Terapia visual</option>
+                <option value="Avaliação pré-operatória">Avaliação pré-operatória</option>
+                <option value="Acompanhamento pós-operatório">Acompanhamento pós-operatório</option>
+                <option value="Prescrição de óculos e lentes de contato">Prescrição de óculos e lentes de contato</option>
+                <option value="Tratamento de doenças oculares">Tratamento de doenças oculares</option>
+                <option value="Orientação para higiene ocular">Orientação para higiene ocular</option>
+            </select>
+        </div>
+        <div>
+            <label for="periodo">Período:</label>
+            <select id="periodo" name="periodo">
+                <option value="">Todos</option>
+                <option value="manhã">Manhã</option>
+                <option value="tarde">Tarde</option>
+                <option value="noite">Noite</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit">Filtrar</button>
+        <a href="{% url 'recepcao_dashboard' %}">Limpar Filtros</a>
+    </div>
+</form>
+
+
+    <!-- Tabela de Agendamentos -->
+    <table>
+        <thead>
+            <tr>
+                <th>Nome do Cliente</th>
+                <th>Data</th>
+                <th>Período</th>
+                <th>Serviço</th>
+                <th>Observações</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for agendamento in agendamentos %}
+            <tr>
+                <td>{{ agendamento.cliente.nome }}</td>
+                <td>{{ agendamento.data }}</td>
+                <td>{{ agendamento.periodo }}</td>
+                <td>{{ agendamento.servico }}</td>
+                <td>{{ agendamento.detalhes_extras }}</td>
+                <td>{{ agendamento.status }}</td>
+                <td>
+                    <form action="{% url 'alterar_status' agendamento.id 'Confirmado' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Confirmar</button>
+                    </form>
+                    <form action="{% url 'alterar_status' agendamento.id 'Recusado' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Recusar</button>
+                    </form>                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
