@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <!-- Link para Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="icon" type="image/png" href="{% static 'img/home/logo2.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/home/logo.PNG' %}">
     <!-- Bloco para CSS específico de cada página -->
     {% block unico %}
     {% endblock %}
@@ -25,36 +25,33 @@
     <center>
         <header id="main-header">
             <div class="opç">
-                <img href="{% url 'home' %}" src="{% static 'img/Base/logo.PNG' %}" alt="" class="logo_img">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'img/Base/logo.PNG' %}" alt="" class="logo_img">
+                </a>
                 <!-- Ícone de hambúrguer -->
                 <div class="hamburger" onclick="menu()">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
-    
+        
                 <!-- Menu -->
                 <nav class="menu" id="menu">
                     <ul>
                         <li><a href="{% url 'home' %}" class="home">Home</a></li>
                         <li class="dropdown">
                             <a class="servicos">Serviços</a>
-                            <div class="options" id="options">
+                            <div class="options">
                                 <a href="{% url 'exames' %}">Exames</a>
                                 <a href="{% url 'cirurgias' %}">Cirurgias</a>
                             </div>
                         </li>
                         <li><a href="{% url 'agendamento' %}" class="agend">Agendamento</a></li>
-                        <div class="logando">
-                        <li>
+                        <li> 
                             {% if request.session.usuario_nome %}
                                 <div class="usuario-container">
                                     <h1 class="usuario-nome" onclick="toggleSair()"> 
-                                        {% if request.session.usuario_nome|length > 7 %}
-                                            {{ request.session.usuario_nome.split.0|slice:":4" }}!
-                                        {% else %}
-                                            {{ request.session.usuario_nome.split.0 }}!
-                                        {% endif %}
+                                        {{ request.session.usuario_nome|default:"Usuário" }}
                                     </h1>
                                     <form method="post" action="{% url 'logout' %}" class="sair-form">
                                         {% csrf_token %}
@@ -64,28 +61,27 @@
                             {% elif request.user.is_authenticated %}
                                 <div class="usuario-container">
                                     <h1 class="usuario-nome" onclick="toggleSair()">
-                                        {{ request.user.username.split.0 }}!
+                                        {{ request.user.username }}
                                     </h1>
                                     <form method="post" action="{% url 'logout' %}" class="sair-form">
                                         {% csrf_token %}
                                         <button type="submit" class="sair">Sair</button>
                                     </form>
                                 </div>
-
                             {% else %}
                                 <a href="{% url 'login' %}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
                                     </svg>
                                 </a>
                             {% endif %}
                         </li>
-                    </div>
                     </ul>
                 </nav>
             </div>
         </header>
+        
     </center>    
 
     <!-- Conteúdo específico de cada página -->
@@ -240,9 +236,19 @@ document.addEventListener("DOMContentLoaded", function() {
 //hambuerguer
 function menu() {
             document.getElementById("menu").classList.toggle("active");
+
         }
+        function fechar() {
+    document.getElementById("menu").classList.remove("active");
+}
 
+// Adiciona o evento de clique ao botão de fechar
+document.getElementById("fechar").addEventListener("click", fechar);
 
+  function menu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('show');
+    }
 
 // Logar e deslogar
 

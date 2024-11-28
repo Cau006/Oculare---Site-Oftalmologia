@@ -9,6 +9,7 @@ from .views import custom_page_not_found
 handler404 = custom_page_not_found
 # Lista de padrões de URL para a aplicação 'core'
 urlpatterns = [
+
      path('', views.home, name='home'),  # Página inicial
      path('login/', views.login_usu     , name='login'),  # URL de login]
      path('logout/', auth_views.LogoutView.as_view(), name='logout'),  # URL de logout
@@ -21,4 +22,6 @@ urlpatterns = [
      path('alterar-status/<int:agendamento_id>/<str:novo_status>/', views.alterar_status, name='alterar_status'),
      path('login/google/', views.google_login, name='google_login'),
      path('login/google/callback/', views.google_callback, name='google_callback'),
+     path('esqueci-senha/', views.esqueci_senha, name='esqueci_senha'),
+     path('redefinir-senha/<str:token>/', views.redefinir_senha, name='redefinir_senha'),
 ]

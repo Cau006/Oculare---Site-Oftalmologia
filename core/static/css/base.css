@@ -9,7 +9,7 @@
 }
 *{
     max-width: 101vw;
-    margin: 0;
+    margin: 0 ;
     padding: 0;
     font-family: "Schibsted Grotesk", sans-serif;
 }
@@ -53,10 +53,7 @@ ul {
     display: flex;
     justify-content: space-between;
 }
-.logo {
-    font-size: 1.7vw;
-    margin-left: 1vw;
-}
+    
 .logando{
     position: absolute;
     right: 6vw;
@@ -166,7 +163,7 @@ header a:hover {
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     position: absolute;
-    right: 2.2vw;
+    right: 1.2vw;
     top: 2.5vw;
 }
 
@@ -182,11 +179,14 @@ header a:hover {
 
 svg {
     width: 3vw;
-    height: 2vw;
+    height: 22vw;
+    top: -7.5vw;
+    position: absolute;
+    left: 13vw;
 }
 
 /* Fim do logar */
-
+/* Caso você queira usar, mas claro, pode reformular eles se quiser */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -201,6 +201,7 @@ svg {
     margin: 0.5vw;
     transition: 0.3s;
 }
+
 
 /* Menu padrão (desktop) */
 .menu {
@@ -220,55 +221,6 @@ svg {
     display: none;
 }
 
-/* Exibir o menu para telas maiores */
-@media (min-width: 768px) {
-    .menu {
-        display: flex;
-    }
-}
-
-/* Menu estilo hambúrguer em dispositivos móveis */
-@media (max-width: 767px) {
-    .hamburger {
-        display: flex;
-        margin-top: 1vw;
-        margin-left: 0.5vw;
-        color: #000000;
-    }
-    .logo_img{
-        margin-right: 20vw;
-    }
-    .menu {
-        position: fixed;
-        top: 0;
-        left: -100vw;
-        width: 60vw;
-        height: 100vh;
-        background-color: #333;
-        flex-direction: column;
-        transition: left 0.3s ease;
-        padding-top: 15vw;
-    }
-
-    .menu.active {
-        left: 0;
-    }
-
-    .menu ul {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .menu ul li {
-        margin: 5vw 0;
-        text-align: center;
-        color: #fff;
-    }
-
-    .nav{
-        color: #fff;
-    }
-}
 /* Seta */
 #backToTop {
     width: 4vw; 
@@ -294,7 +246,7 @@ svg {
 #backToTopContainer {
     position: fixed;
     top: 47vw; 
-    right: 2vw;
+    right: 10vw;
     text-align: center;
     z-index: 1000;
     display: none;
@@ -306,7 +258,6 @@ svg {
 footer {
     width: 2vw;
     height: 20vw;
-    position: relative;
     width: 100%;
     background-color: #333;
     color: white;
@@ -389,7 +340,7 @@ i {
     height: 5vw;
     border-radius: 4vw;
     position: absolute;
-    margin-top: 1vw;
+    margin-top: -1.5vw;
     left: 5vw;
 }
 .logo_img:hover{
@@ -430,4 +381,123 @@ iframe {
 .surgimento.visivel {
     opacity: 1;
     transform: scale(1);  /* Volta ao tamanho original */
+}
+
+
+
+
+
+/* Exibir o ícone de hambúrguer apenas em telas menores */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        margin-top: 1.5vw;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.9);
+        position: fixed;
+        top: 7vw;
+        right: -2;
+        width: 120%;
+        height: calc(100vh);
+        z-index: 999;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu ul li, .home , .agend , .servicos {
+        margin: 4vw 0;
+        font-size: 7vw;  
+  }
+  .options {
+    position: absolute;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    min-width: 12.25vw;
+    box-shadow: 0 0.03vw 0.07vw rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 0.5vw;
+    margin-top: -2vw;
+}
+
+.options a {
+    color: rgb(255, 255, 255);
+    
+    text-decoration: none;
+    margin-bottom: 1vw;
+    font-size: 6vw;
+}
+svg{
+    left: -49vw;
+    top: 5vw;
+    width: 100vw;
+}
+
+/* Nome do usuário */
+.usuario-nome {
+    font-size: 8vw; 
+    font-weight: bold;
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 3vw 6vw; 
+    border-radius: 6vw; 
+    box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: absolute;
+    right: -23vw;
+}
+
+.usuario-nome:hover {
+    background-color: #007bff;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Formulário de logout */
+.sair-form {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 1vw;
+    z-index: 10;
+}
+
+/* Botão "Sair" */
+.sair {
+    font-size: 6vw;
+    font-weight: bold;
+    color: white;
+    background-color: #dc3545;
+    border: none;
+    padding: 2vw 5vw;
+    border-radius: 6vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    position: absolute;
+    right: -10vw;
+    top: 25vw;
+}
+
+.sair:hover {
+    background-color: #c82333;
+    box-shadow: 0 0.4vw 1vw rgba(0, 0, 0, 0.3); 
+}
+
+.menu.show {
+    display: flex;
+}
+
+.hamburger span {
+    background: #000; /* Ícone do hambúrguer visível */
+}
+
 }

@@ -1,24 +1,11 @@
  
   /* Limita a altura e largura dos elementos para não causar estouros */
-  
-  @media (max-width: 768px){
-    .img_inicio{
-        display: none;
-    }  
-    .cima{
-        margin-left: 0;
-        display: flex;
-        justify-content: center; /* Centraliza os itens horizontalmente */
-    }
-    .slogan2{
-        margin-top: 6vw;
-        text-align: justify;
-    }
-    .btslogan{
-        margin-left: 0vw !important;
-        margin-top:6vw;
-    }
+  *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
      
 
         .slogan1{
@@ -569,3 +556,4 @@ details {
     animation: animate 0.5s ease-in-out 1 forwards;
     margin-top: 1vw;
    }
+

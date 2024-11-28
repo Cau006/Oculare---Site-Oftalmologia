@@ -1,15 +1,16 @@
 from django.db import models
 from django.contrib.auth.hashers import make_password, check_password
 
+from django.db import models
+import uuid
+
 class Cadastro(models.Model):
     nome = models.CharField(max_length=100, unique=True)
     cpf = models.CharField(max_length=11, unique=True)
     email = models.EmailField(max_length=100, unique=True)
-    senha = models.CharField(max_length=128)  # Aumentei o tamanho para suportar o hash
-    
-    def __str__(self):
-        return f'{self.nome} - {self.email}'
-    
+    senha = models.CharField(max_length=128)
+    reset_token = models.CharField(max_length=255, blank=True, null=True)  # Token para resetar a senha
+
     def set_password(self, raw_password):
         self.senha = make_password(raw_password)
 

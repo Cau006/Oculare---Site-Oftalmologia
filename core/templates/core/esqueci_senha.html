@@ -1,0 +1,7 @@
+<form method="post">
+    {% csrf_token %}
+    <h2>Esqueceu sua senha?</h2>
+    <p>Digite o seu e-mail, e enviaremos instruções para redefinir sua senha.</p>
+    <input type="email" name="email" placeholder="Seu e-mail" required>
+    <button type="submit">Enviar</button>
+</form>

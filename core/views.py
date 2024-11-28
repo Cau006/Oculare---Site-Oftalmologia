@@ -3,15 +3,17 @@ from django.contrib import messages
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
-from .models import Cadastro, Agendamento
-
+from django.core.mail import send_mail
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
+from django.conf import settings
+from django.http import JsonResponse
+from django.contrib.auth.models import User
 import json
 import requests
-from django.conf import settings
-from django.shortcuts import redirect
-from django.contrib.auth import login
-from django.contrib.auth.models import User
-from django.http import JsonResponse
+import uuid
+
+from .models import Cadastro, Agendamento
 
 # URL para solicitar autenticação
 GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth"
@@ -53,7 +55,7 @@ def google_callback(request):
         f"{GOOGLE_USER_INFO_URL}?access_token={access_token}"
     )
     user_info = user_info_response.json()
-    
+
     email = user_info['email']
     primeiro_nome = user_info.get('given_name', '')
     sobrenome = user_info.get('family_name', '')
@@ -72,14 +74,69 @@ def custom_page_not_found(request, exception):
 # View para a página inicial (home)
 def home(request):
     return render(request, 'core/home.html')
-    
+
+
+def esqueci_senha(request):
+    if request.method == 'POST':
+        email = request.POST.get('email_esqueci')
+        if email:  # Certifique-se de que o email foi enviado
+            try:
+                usuario = Cadastro.objects.get(email=email)
+                # Gera token único
+                token = str(uuid.uuid4())
+                usuario.reset_token = token
+                usuario.save()
+
+                # URL para redefinir senha
+                reset_url = request.build_absolute_uri(f"/redefinir-senha/{token}/")
+
+                # Envia o e-mail
+                send_mail(
+                    'Redefinição de senha',
+                    f'Clique no link para redefinir sua senha: {reset_url}',
+                    settings.DEFAULT_FROM_EMAIL,
+                    [email],
+                    fail_silently=False,
+                )
+                messages.success(request, "Instruções enviadas para o e-mail fornecido.")
+                return redirect('login')  # Redireciona para a página de login
+            except Cadastro.DoesNotExist:
+                messages.error(request, "E-mail não encontrado.")
+                return redirect('esqueci_senha')  # Redireciona para a mesma página
+        else:
+            messages.error(request, "Por favor, insira um e-mail válido.")
+            return redirect('esqueci_senha')  # Redireciona para a mesma página
+    # Se a solicitação não for POST, renderiza a página de "Esqueci minha senha"
+    return render(request, 'core/login.html', {'form_type': 'esqueci_senha'})
+
+def redefinir_senha(request, token):
+    try:
+        usuario = Cadastro.objects.get(reset_token=token)
+    except Cadastro.DoesNotExist:
+        messages.error(request, "Token inválido ou expirado.")
+        return redirect('esqueci_senha')
+
+    if request.method == 'POST':
+        nova_senha = request.POST.get('nova_senha')
+        confirma_senha = request.POST.get('confirma_senha')
+
+        if nova_senha != confirma_senha:
+            messages.error(request, "As senhas não coincidem.")
+        else:
+            usuario.set_password(nova_senha)
+            usuario.reset_token = None  # Remove o token após redefinir
+            usuario.save()
+            messages.success(request, "Senha redefinida com sucesso.")
+            return redirect('login')
+
+    return render(request, 'core/redefinir_senha.html', {'token': token})
 
 def recepcao_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
-        
+
         if user is not None:
             if user.groups.filter(name='Recepção').exists():
                 login(request, user)
@@ -88,7 +145,7 @@ def recepcao_login(request):
                 messages.error(request, "Você não tem permissão para acessar esta área.")
         else:
             messages.error(request, "Usuário ou senha inválidos.")
-    
+
     return render(request, 'core/login_recepcao.html')
 
 @login_required
@@ -190,9 +247,9 @@ def agendamento(request):
         agendamento.save()
         return redirect('agendamento')
 
-    
+
     agendamentos = Agendamento.objects.filter(cliente=usuario)
-    
+
     agendamentos = Agendamento.objects.filter(cliente=usuario).order_by('data')  # Ordena pela data mais próxima
     return render(request, 'core/agendamento.html', {'agendamentos': agendamentos})
 
@@ -240,28 +297,29 @@ def cadastrar(request):
         cpf = request.POST.get('cpf')
         email = request.POST.get('email')
         senha = request.POST.get('senha')
-        
+
         novo_usuario = Cadastro(nome=nome, cpf=cpf, email=email)
         novo_usuario.set_password(senha)  # Armazena a senha de forma segura
         novo_usuario.save()
-        
-        return redirect('login')  # Redireciona para a página de login  
-    
+
+        return redirect('login')  # Redireciona para a página de login
+
 def servicos(request):
     return render(request, 'servicos.html')
 
 def alterar_status(request, agendamento_id, novo_status):
     # Obtém o agendamento ou retorna 404 se não encontrado
     agendamento = get_object_or_404(Agendamento, id=agendamento_id)
-    
+
     # Opcional: Verifique se novo_status é válido
     status_permitidos = ['Pendente', 'Confirmado', 'Remarcado', 'Recusado']
     if novo_status not in status_permitidos:
-        
+
         return redirect('home')  # Redireciona em caso de status inválido
-    
+
     # Atualiza o status do agendamento
     agendamento.status = novo_status
     agendamento.save()
-    
-    return redirect('recepcao_dashboard') 
+
+    return redirect('recepcao_dashboard')
+
