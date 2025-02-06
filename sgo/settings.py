@@ -152,3 +152,5 @@ SOCIAL_AUTH_REDIRECT_URI = 'http://localhost:8000/login/google/callback/'
 # URLs que serão usadas
 LOGIN_REDIRECT_URL = '/'  # Página inicial após login
 LOGOUT_REDIRECT_URL = '/'  # Página inicial após logout
+
+SITE_ID = 1

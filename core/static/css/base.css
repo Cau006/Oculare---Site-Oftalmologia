@@ -1,22 +1,60 @@
-  /*Header acima*/
-  html {
+/* Header acima */
+html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-   overflow-y:scroll;
+    overflow-y: scroll;
 }
-*{
+
+* {
     max-width: 101vw;
-    margin: 0 ;
+    margin: 0;
     padding: 0;
     font-family: "Schibsted Grotesk", sans-serif;
 }
+
 html, body {
-    height: 100%; /* Define 100% de altura para a tela */
+    height: 100%;
     margin: 0;
     padding: 0;
+}
+
+.header {
+    background-color: rgba(0, 0, 0, 0.875);
+    width: 0.25vw;
+    height: 5vw;
+    margin-top: 1vw;
+    margin-left: 5vw;
+}
+
+.segunda {
+    margin-right: -0.2vw;
+}
+
+.logo_img {
+    height: 5vw;
+    border-radius: 4vw;
+    position: absolute;
+    margin-top: -1.5vw;
+    left: 5vw;
+}
+
+.logo_img:hover {
+    cursor: pointer;
+}
+
+.logo {
+    position: absolute;
+    left: 20vw;
+}
+
+iframe {
+    width: 30vw;
+    height: 15vw;
+    bottom: 0;
+    margin-right: 2vw;
 }
 
 header {
@@ -24,7 +62,7 @@ header {
     width: 95vw;
     height: 7vw;
     box-shadow: 0 0 0.01vw 0 rgba(0, 0, 0, 0.1);
-    position: fixed; 
+    position: fixed;
     top: 2vw;
     left: 2vw;
     right: 0;
@@ -34,8 +72,8 @@ header {
 }
 
 header.scrolled {
-    background-color: rgb(255, 255, 255); /* Menu opaco ao rolar */
-    box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.1); /* Sombra adicionada ao rolar */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.1);
     border-bottom: #333 solid 0.1vw;
     width: 100%;
     top: 0;
@@ -53,14 +91,16 @@ ul {
     display: flex;
     justify-content: space-between;
 }
-    
-.logando{
+
+.logando {
     position: absolute;
     right: 6vw;
 }
-.home{
+
+.home {
     margin-left: 0vw;
 }
+
 li {
     position: relative;
     float: left;
@@ -109,9 +149,7 @@ header a:hover {
     text-decoration: underline;
     color: rgb(58, 94, 141);
 }
-
-/* Parte de deslogar e usuario */
-
+/* Usuario */
 .usuario-container {
     position: relative;
     display: inline-block;
@@ -120,63 +158,86 @@ header a:hover {
     cursor: pointer;
 }
 
-/* Nome do usuário */
+/* Estilização do Nome do Usuário */
 .usuario-nome {
-    font-size: 1.5vw; /* Texto responsivo */
+    font-size: 1.2rem;
     font-weight: bold;
     color: #333;
     background-color: #f0f0f0;
-    padding: 1vw 2vw; /* Espaçamento dinâmico */
-    border-radius: 2vw; /* Bordas arredondadas */
-    box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.2); /* Sombra adaptativa */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    position: absolute;
-    right: 1vw;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    display: inline-block;
 }
 
-.usuario-nome:hover {
+.usuario-nome:hover,
+.usuario-nome:focus {
     background-color: #007bff;
     color: white;
-    transform: scale(1.05);
+    transform: scale(1.08);
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
+    outline: none;
 }
 
-/* Formulário de logout */
+/* Container do botão "Sair" */
 .sair-form {
-    display: none;
     position: absolute;
-    top: 100%; /* Aparece abaixo do nome */
+    top: 100%; /* Posiciona abaixo do nome */
     left: 50%;
-    transform: translateX(-50%);
-    margin-top: 1vw;
-    z-index: 10;
+    transform: translateX(-50%) translateY(-10px);
+    padding: 0.5rem;
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
 
-/* Botão "Sair" */
+/* Classe ativa exibe o botão com transição */
+.sair-form.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(5px);
+}
+
+/* Estilização do Botão "Sair" */
 .sair {
-    font-size: 1vw;
+    font-size: 1.2rem;
     font-weight: bold;
     color: white;
     background-color: #dc3545;
     border: none;
-    padding: 0.8vw 1.6vw;
-    border-radius: 2vw;
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    position: absolute;
-    right: 1.2vw;
-    top: 2.5vw;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.sair:hover {
+.sair:hover,
+.sair:focus {
     background-color: #c82333;
-    box-shadow: 0 0.4vw 1vw rgba(0, 0, 0, 0.3); /* Sombra proporcional */
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+    outline: none;
 }
 
-/* Exibir o botão ao passar o mouse */
-.usuario-container:hover .sair-form {
-    display: block;
+/* Ajustes para Responsividade */
+@media (max-width: 600px) {
+    .usuario-nome {
+        font-size: 2rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .sair {
+        font-size: 1.5rem;
+        padding: 0.5rem 1rem;
+    }
 }
 
+
+/* Icone */
 svg {
     width: 3vw;
     height: 22vw;
@@ -185,8 +246,8 @@ svg {
     left: 13vw;
 }
 
-/* Fim do logar */
-/* Caso você queira usar, mas claro, pode reformular eles se quiser */
+
+/* Menu hamburguer */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -221,141 +282,106 @@ svg {
     display: none;
 }
 
-/* Seta */
-#backToTop {
-    width: 4vw; 
-    height: 5vw; 
-    color: rgb(0, 0, 0);
-    text-align: center;
-    font-size: 3vw; 
-    border-radius: 50%;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-    text-decoration: none; 
-}
-
-
-
-#backToTopText {
-    display: block;
-    color: #000000;
-    font-size: 1vw;
-    margin-top: 0vw;
-}
-
-#backToTopContainer {
-    position: fixed;
-    top: 47vw; 
-    right: 10vw;
-    text-align: center;
-    z-index: 1000;
-    display: none;
-}
-
-
-/* Footer */
-
+/* Rodapé */
 footer {
-    width: 2vw;
-    height: 20vw;
-    width: 100%;
     background-color: #333;
     color: white;
-    text-align: center;
-    bottom: 0;
+    padding: 2rem;
+    font-family: Arial, sans-serif;
 }
 
-.espac {
-    width: auto;
-    height: 1vw;
-}
-
-.geral {
-    margin-top: 1vw;
-    margin-left: 2vw;
+.rodape-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.title {
-    margin-bottom: 0.2vw;
-    font-size: 3vw;
-    color: white;
+.rodape-secao {
+    flex: 1 1 300px;
+    min-width: 250px;
 }
 
-.geralapp {
+.titulo-rodape {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+address {
+    font-style: normal;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.redes-sociais {
     display: flex;
-    margin-top: 0.15vw;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.app {
-    display: flex;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    margin-right: 0.2vw;
-}
-
-i {
-    font-size: 1vw;
-}
-
-.escrit {
-    margin-right: 0.1vw;
-    cursor: pointer;
+.link-social {
     color: white;
-    font-size: 1vw;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
 }
 
-.direitos {
-    margin-top: 0.18vw;
-    font-size: 1vw;
-    color: rgb(255, 255, 255);
+.link-social:hover {
+    color: #00bcd4;
 }
 
-.line {
-    width: auto;
-    height: 0.03vw;
-    background-color: rgba(255, 255, 255, 0.875);
-    margin-top: 0.05vw;
-    margin-bottom: 0.01vw;
+.localizacao iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    border: 0;
 }
 
-.vertical {
-    width: 0.5vw;
-    height: 11vw;
-    background-color: rgba(255, 255, 255, 0.875);
-    margin-top: 2.5vw;
+.rodape-fim {
+    text-align: center;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+    font-size: 0.875rem;
 }
-.header{
-    background-color: rgba(0, 0, 0, 0.875);
-    width: 0.25vw;
-    height: 5vw;
-    margin-top: 1vw;
-    margin-left: 5vw;
+
+/* Tornando o layout responsivo */
+@media (max-width: 768px) {
+    .rodape-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .rodape-secao {
+        flex: 1 1 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .localizacao iframe {
+        height: 150px;
+    }
 }
-.segunda{
-    margin-right: -0.2vw;
+
+@media (max-width: 480px) {
+    footer {
+        padding: 1.5rem;
+    }
+
+    .titulo-rodape {
+        font-size: 1.25rem;
+    }
+
+    .rodape-fim {
+        font-size: 0.75rem;
+    }
 }
-.logo_img{
-    height: 5vw;
-    border-radius: 4vw;
-    position: absolute;
-    margin-top: -1.5vw;
-    left: 5vw;
-}
-.logo_img:hover{
-    cursor: pointer;
-}
-.logo{
-    position: absolute;
-    left: 20vw;
-}
-iframe {
-    width: 30vw;
-    bottom: 0;
-    height: 15vw;
-    margin-right: 2vw;
-}
+
 
 /* Animação chegando de lado */
 .animacao_esquerda {
@@ -440,57 +466,10 @@ svg{
     width: 100vw;
 }
 
-/* Nome do usuário */
-.usuario-nome {
-    font-size: 8vw; 
-    font-weight: bold;
-    color: #333;
-    background-color: #f0f0f0;
-    padding: 3vw 6vw; 
-    border-radius: 6vw; 
-    box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.2); 
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    position: absolute;
-    right: -23vw;
-}
 
-.usuario-nome:hover {
-    background-color: #007bff;
-    color: white;
-    transform: scale(1.05);
-}
 
 /* Formulário de logout */
-.sair-form {
-    display: none;
-    position: absolute;
-    top: 100%; 
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 1vw;
-    z-index: 10;
-}
 
-/* Botão "Sair" */
-.sair {
-    font-size: 6vw;
-    font-weight: bold;
-    color: white;
-    background-color: #dc3545;
-    border: none;
-    padding: 2vw 5vw;
-    border-radius: 6vw;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    position: absolute;
-    right: -10vw;
-    top: 25vw;
-}
-
-.sair:hover {
-    background-color: #c82333;
-    box-shadow: 0 0.4vw 1vw rgba(0, 0, 0, 0.3); 
-}
 
 .menu.show {
     display: flex;

@@ -48,6 +48,7 @@ Login - Oculare
                     </div>
                     <div class="espaço">
                         <label class="fraseinter">Não tem conta?  <a class="linkinter cadastre"> Cadastre-se aqui</a></label>
+                        <br>
                         <label class="fraseinter"><a class="linkinter esqueceu-senha"> Esqueceu a Senha</a></label>
                     </div>
                     <button class="oauthButton google cadastre" onclick="window.location.href='{% url 'google_login' %}'">
@@ -142,9 +143,11 @@ Login - Oculare
                         <div class="underline"></div>
                     </div>
                     <button type="submit" class="logar espaco">Recuperar senha</button>
-                    <label class="fraseinter">
+                    <div class="espaço">                 
+                        <label class="fraseinter">
                         <a href="{% url 'login' %}" class="linkinter voltar">Voltar</a>
-                    </label>
+                        </label>
+                    </div>  
                 </form>
 
             </div>

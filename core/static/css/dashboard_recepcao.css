@@ -8,7 +8,7 @@ body {
 
 .dashboard-container {
     position: relative;
-    max-width: 90vw; /* Limite de largura */
+    max-width: 100vw; /* Limite de largura */
     margin: 2vw auto; /* Centralizar */
     padding: 2vw; /* Espaçamento interno */
     background-color: #ffffff;
@@ -16,11 +16,9 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
     top: 10vw;
     flex: 1;
-
 }
 
-
-/* Formulário de filtros *//* Formulário de filtros */
+/* Formulário de filtros */
 .filter-form {
     width: 80vw;
     margin: 2vw auto;
@@ -43,16 +41,16 @@ body {
     display: block;
     margin-bottom: 0.5vw;
     font-weight: bold;
-    font-size: 1vw;
+    font-size: 1.2vw;
 }
 
 .filter-form input,
 .filter-form select {
     width: 90%;
-    padding: 1vw;
+    padding: 1.2vw;
     border: 0.1vw solid #ccc;
     border-radius: 0.5vw;
-    font-size: 1vw;
+    font-size: 1.2vw;
 }
 
 .filter-form .form-actions {
@@ -62,12 +60,12 @@ body {
 
 .filter-form .form-actions button,
 .filter-form .form-actions a {
-    padding: 1vw 2vw;
+    padding: 1.2vw 2.5vw;
     border: none;
     border-radius: 0.5vw;
     cursor: pointer;
     text-decoration: none;
-    font-size: 1vw;
+    font-size: 1.2vw;
 }
 
 .filter-form .form-actions button {
@@ -81,60 +79,67 @@ body {
     margin-left: 1vw;
 }
 
-
-
 .dashboard-container h1 {
     text-align: center;
-    font-size: 2vw; /* Tamanho da fonte do título ajustado */
+    font-size: 2.5vw;
     color: #333;
-    margin-bottom: 2vw; /* Espaçamento abaixo do título */
+    margin-bottom: 2vw;
 }
 
+/* Estilo da tabela */
 table {
-    width: 100%; /* Largura total */
-    border-collapse: collapse; /* Remover espaçamento entre células */
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
 th, td {
-    padding: 1vw; /* Espaçamento interno das células ajustado */
+    padding: 1.5vw;
     text-align: left;
-    border-bottom: 1px solid #ddd; /* Linha inferior */
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-align: center;
 }
 
 th {
-    background-color: #007bff; /* Cor de fundo do cabeçalho */
-    color: white; /* Cor do texto */
-    font-size: 1.5vw; /* Tamanho da fonte do cabeçalho ajustado */
-    text-align: center;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.8vw;
 }
 
 td {
-    font-size: 1.2vw; /* Tamanho da fonte das células ajustado */
-    text-align: center;
+    font-size: 1.5vw;
+}
+
+th, td {
+    min-width: 150px;
+    max-width: 400px;
 }
 
 .dashboard-container form button {
-    padding: 0.4vw 1.2vw; /* Espaçamento interno do botão ajustado */
-    font-size: 1.5vw; /* Tamanho da fonte do botão ajustado */
-    color: white; /* Cor do texto do botão */
-    background-color: #46c4d5; /* Cor de fundo do botão */
-    border: none; /* Remover borda */
-    border-radius: 0.5vw; /* Bordas arredondadas */
-    cursor: pointer; /* Mão ao passar o mouse */
-    transition: background-color 0.3s; /* Transição suave */
-    width: 10vw;
+    padding: 0.6vw 1.5vw;
+    font-size: 1.8vw;
+    color: white;
+    background-color: #46c4d5;
+    border: none;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 12vw;
     margin-top: 1vw;
 }
 
 .dashboard-container form button:hover {
-    background-color: #238794; /* Cor de fundo ao passar o mouse */
+    background-color: #238794;
 }
 
 .dashboard-container form {
-    display: inline; /* Formulários na mesma linha */
-    margin-right: 1vw; /* Espaçamento entre os formulários */
+    display: inline;
+    margin-right: 1vw;
 }
-/* Define altura total para html e body */
+
 html, body {
     height: 100%;
     margin: 0;
@@ -142,10 +147,73 @@ html, body {
     flex-direction: column;
 }
 
-/* A wrapper (content) ocupa todo o espaço disponível */
-
-
-/* Estilo do footer */
 footer {
     margin-top: 20vh;
+}
+@media (max-width: 900px) {
+    .filter-form label {
+        font-size: 1.2rem;
+    }
+    .filter-form input,
+    .filter-form select {
+    font-size: 1.2rem;
+    }
+    .filter-form .form-actions button,
+    .filter-form .form-actions a {
+    padding: 1.6vw 2.8vw;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.2rem;
+    }
+    .dashboard-container h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 2vw;
+    }
+    
+    .dashboard-container {
+        max-width: 100vw;
+        padding: 4vw;
+    }
+
+    th, td {
+        font-size: 1rem;
+        padding: 2vw;
+    }
+    .dashboard-container form button {
+        font-size: 0.9rem;
+        color: white;
+        background-color: #46c4d5;
+        border: none;
+        border-radius: 0.5vw;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 6rem;
+        margin-top: 1vw;
+    }
+
+
+@media (max-width: 600px) {
+    .dashboard-container {
+        max-width: 100%;
+        padding: 6vw;
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    th, td {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+
+    th {
+        background-color: #0056b3;
+    }
 }

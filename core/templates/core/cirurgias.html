@@ -1,179 +1,138 @@
 {% extends 'base.html' %}
 
-  {% block title %}
-  Cirurgia - Oculare
-  {% endblock %}
+{% block title %}
+EXAMES - OCULARE
+{% endblock %}
 
-  {% block unico %}
-  {% load static %}
+{% block unico %}
+{% load static %}
 
-      <link rel="stylesheet" href="{%static 'css/cirurgias.css' %}">
-      <script src="{% static 'servicos.js' %}"></script>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
-  </head>
-  
-  
-  <body>
-  
-      
-  
-      <div class="img0">
-        <img src="{%static 'img/servicos/cirurgias.jfif' %}" alt="" class="foto1">
-  
-  </div>
-      
-  
-      <div class="quadrado">
-          <div class="texto">
-          
-              <h1 class="titulo">Cirurgias Oftalmológicos</h1>
-          <div class="txt1">
-              <p>A Clínica Oculare oferece cirurgias oftalmológicas em São Paulo, com uma 
-                equipe de profissionais altamente qualificados e equipamentos de última geração. 
-                Nosso compromisso é realizar procedimentos cirúrgicos com precisão e segurança, 
-                garantindo uma recuperação rápida e eficaz para nossos pacientes.</p>
-              
-              </div>
-  
-          </div>
-              
-      </div> 
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <br><br><br><br>    
-  
-  
-  </div>
-  <!--<img src="/Exames/img/foto 1.png" class="foto1">-->
-  
-  
-  <img src="{%static 'img/servicos/cirurgia02.webp' %}" alt="" class="ft2">
-  
-  
+    <link rel="stylesheet" href="{%static 'css/cirurgias.css' %}">
+    <script src="{% static 'exames.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
 
-  <div class="t22">
-  <p>Exames oftalmológicos<br> precisos com a Clínica<br> Oculare</p>
-  </div>
+{% endblock %}
+{% block content %}
+
+
+
+    
+
+<div class="section-container">
+    <div class="img-container">
+      <img src="{% static 'img/Cirurgias/cirurgias.jfif' %}" alt="Exames Oftalmológicos" class="image">
+    </div>
   
-  <div class="p2">
-  <h1>A Clínica Oculare se destaca em oftalmologia, oferecendo procedimentos cirúrgicos de alta 
-    qualidade com tecnologia avançada e técnicas modernas. Sua equipe especializada oferece 
-    atendimento personalizado, priorizando precisão e segurança em cada etapa. Comprometida com a
-     inovação, a clínica atende eficazmente às necessidades visuais, promovendo rápida 
-     recuperação e significativa melhoria na qualidade de vida dos pacientes.
-      </h1>
-  
-  </div>
-  
-  <br><br>
-  
-  
-          <button class="botagend" type="button" onclick="location.href='{% url 'agendamento' %}'">Agendar consulta</button>
-  
-  
-  
-  
-  <div class="linha">
-  <hr>
-  </div>
-  
-  
-  <br><br><br><br><br><br><br><br>
-      
-  
-  </div>
-      
-  
-  
-  <div class="linha2">
-      <hr>
+    <div class="content-box">
+      <div class="text-content">
+        <h1 class="content-title">Cirurgias Oftalmológicas</h1>
+        <p class="content-paragraph">
+            A Boa Vista realiza cirurgias oftalmológicas em São Paulo, com uma equipe de especialistas altamente capacitados e tecnologia de ponta. Nosso objetivo é oferecer tratamentos seguros e eficazes para diversas condições oculares, garantindo a recuperação da saúde visual com excelência e cuidado individualizado para cada paciente.
+        </p>
       </div>
-  
-  
-  <div class="card1">
-      
+    </div>
   </div>
-  
-  
-  <div class="txt3">
-      <p>Na Clínica Oculare, oferecemos cuidados de excelência para a sua saúde ocular, destacando o exame de 
-          retinografia. Essa técnica avançada captura imagens detalhadas da retina, sendo essencial para a 
-          detecção precoce de condições oculares, sem a necessidade de dilatação das pupilas, o que torna o
-          procedimento mais confortável e rápido. Agende seu exame conosco e assegure um monitoramento preciso
-          da sua saúde ocular. Nossa equipe está pronta para oferecer um atendimento de alta qualidade e 
-          esclarecer suas dúvidas.</p>
-      </div>          
-  
-  
-  
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  
-      <div class="card2">
-      
-      </div>
-      
-      
-      <div class="txt4">
-          <p>Na Oculare, realizamos a gonioscopia, um exame especializado que avalia o ângulo de drenagem do 
-              olho, fundamental para diagnosticar e monitorar condições como o glaucoma. Este exame deve ser 
-              feito por um oftalmologista qualificado, garantindo precisão no diagnóstico. Nossa equipe é 
-              dedicada a oferecer atendimento de alta qualidade, assegurando que cada exame seja realizado 
-              com cuidado e expertise.</p>
-          </div>
-  
-  
-          <button class="bot2"  id="bot2" >Ver mais</button>
-          <div id="novoConteudo" style="display: none;">
-              <div class="card3">
-                      <div class="img1">
-                          <img src="{%static 'img/logo2maior' %}" >
-                      </div>
-                  </div>
-                      
-                      
-                  <div  class="txt5">
-                      <p>Na Clínica Oculare, oferecemos retinografia, uma tecnologia avançada que captura imagens detalhadas da retina sem 
-                          dilatação das pupilas, tornando o exame mais confortável e ágil. Essencial para a detecção precoce de condições 
-                          oculares, este procedimento permite identificar problemas antes que se tornem sérios. Ao agendar seu exame 
-                          conosco, você garante um monitoramento eficaz da sua saúde ocular. Nossa equipe qualificada está sempre pronta 
-                          para oferecer um atendimento acolhedor e profissional. Entre em contato e cuide da sua visão!</p>
-                      </div>     
-                      
-                      <br>   
-                  
-                      <div class="card4">
-                          <div class="img1">
-                              <img src="/EXAMES/img/logo2maior.png" >
-                          </div>
-                      </div>
-                      
-                      
-                      <div  class="txt6">
-                          <p>O exame de fotodocumentação do segmento anterior da Clínica Oculare em São Paulo utiliza uma câmera de última geração para 
-                              capturar imagens detalhadas das estruturas oculares frontais, como córnea, íris, pupila e conjuntiva. Essa tecnologia 
-                              proporciona visualização nítida, permitindo diagnósticos precisos e monitoramento eficaz de condições oculares. Assim, é 
-                              essencial para a saúde visual dos pacientes, ajudando na identificação precoce de problemas e na definição de tratamentos adequados. A Clínica Oculare se destaca por sua dedicação à excelência e à inovação na preservação da visão.</p>
-                          </div>  
-          </div>
-      
-          <script>
-              const botao = document.getElementById('bot2');
-              const conteudo = document.getElementById('novoConteudo');
-              botao.addEventListener('click', () => {
-                  conteudo.style.display = 'block'; 
-                  botao.style.display = 'none'; 
-                  const novoBotao = document.createElement('button');
-                  novoBotao.textContent = 'Ver menos';
-                  novoBotao.classList.add('novo-botao');
-                  document.body.appendChild(novoBotao);
-                  novoBotao.addEventListener('click', () => {
-                      conteudo.style.display = 'none'; 
-                      botao.style.display = 'block'; 
-                      document.body.removeChild(novoBotao);   
-                  });
-              });
-          </script>
+  <!-- Segunda Parte -->
 
+<div class="segunda azulcima">
+
+<img src="{%static 'img/Cirurgias/segunda.jpg' %}" alt="" class="ft2">
+<div class="s_dentro">
+<div class="t22">
+<p>Cirurgias oftalmológicas seguras com a Clínica Oculare</p>
+</div>
+
+<div class="p2">
+<h1>A Clínica Oculare oferece cirurgias oftalmológicas avançadas para tratar diversas condições oculares com precisão e segurança. Entre os procedimentos realizados, destacam-se a cirurgia de catarata, que substitui o cristalino opaco por uma lente intraocular; a cirurgia refrativa, que corrige miopia, hipermetropia e astigmatismo; e a vitrectomia, indicada para doenças da retina. Além disso, contamos com tecnologia de ponta para procedimentos como o crosslinking corneano, utilizado no tratamento do ceratocone, garantindo uma recuperação eficaz e melhor qualidade de vida para nossos pacientes.
+    </h1>
+
+</div>
+<div>
+        <button class="botagend" type="button" onclick="location.href='{% url 'agendamento' %}'">Agendar consulta</button>
+</div>
+</div>
+</div>
+
+
+
+
+<!-- Terceira Parte -->
+ <div class="direita azulcima">
+    <img src="{% static 'img/Cirurgias/glaucoma.jpeg' %}" alt="" class="card1"> 
+
+<div class="txt3">
+    <p>Na Clínica Oculare, oferecemos tratamentos avançados para o glaucoma, incluindo procedimentos cirúrgicos seguros e eficazes. A cirurgia de glaucoma é indicada para reduzir a pressão intraocular quando os tratamentos convencionais não são suficientes, prevenindo danos ao nervo óptico e a perda da visão. Contamos com técnicas modernas, como a trabeculectomia e implantes de drenagem, que melhoram o escoamento do humor aquoso e ajudam a estabilizar a condição.</p>
+    </div>          
+
+</div>
+
+<!-- Quarta Parte -->
+ 
+<div class="esquerda">
+   
+    <div class="txt4">
+        <p>Na Clínica Oculare, realizamos a cirurgia de catarata com tecnologia de ponta e máxima segurança. Esse procedimento é essencial para remover o cristalino opaco e substituí-lo por uma lente intraocular, restaurando a nitidez da visão e melhorando a qualidade de vida do paciente. Com técnicas modernas e minimamente invasivas, proporcionamos uma recuperação rápida e confortável.</p>
+        </div>
+        <img src="{% static 'img/Cirurgias/catarata.jpeg' %}" class="card2" alt="">
+</div>
+<!-- Depois -->
+<button class="bot2"  id="bot2" >Ver mais</button>
+
+
+        <div id="novoConteudo" style="display: none;">
+            
+            <!-- Quinta Parte -->
+
+            <div class="direita azulcima">
+                <img src="{% static 'img/Cirurgias/miopia.jpeg' %}" alt="" class="card1"> 
+            
+            <div class="txt3">
+                <p>Na Clínica Oculare, realizamos cirurgias refrativas para corrigir a miopia de forma segura e eficaz. Utilizando técnicas avançadas, como LASIK e PRK, remodelamos a curvatura da córnea para proporcionar uma visão nítida sem a necessidade de óculos ou lentes de contato. O procedimento é rápido, minimamente invasivo e tem uma recuperação ágil, permitindo que você retome suas atividades com mais liberdade.</p>
+                </div>          
+            
+            </div>  
+                    
+                <!-- Sexta Parte -->
+                <div class="esquerda">
+   
+                    <div class="txt4">
+                        <p>Na Clínica Oculare, realizamos a cirurgia de pterígio com técnicas modernas para remover o tecido anormal que cresce sobre a córnea, causando desconforto, irritação e alterações na visão. O procedimento é seguro, rápido e minimamente invasivo, garantindo uma recuperação tranquila e eficaz. Além disso, utilizamos métodos avançados para reduzir as chances de recidiva, proporcionando resultados duradouros.
+                        </p>
+                        </div>
+                        <img src="{% static 'img/Cirurgias/pterígio.jpg' %}" class="card2" alt="">
+                </div>
+
+        </div>
+    
+        <script>
+            const botao = document.getElementById('bot2');
+            const conteudo = document.getElementById('novoConteudo');
         
+            botao.addEventListener('click', () => {
+                conteudo.style.display = 'block'; 
+                botao.style.display = 'none'; 
+                
+                // Criar um contêiner para o botão de "Ver Menos"
+                const containerBotao = document.createElement('div');
+                containerBotao.style.textAlign = 'center';
+                containerBotao.style.margin = '1rem auto';
+        
+                const novoBotao = document.createElement('button');
+                novoBotao.textContent = 'Ver menos';
+                novoBotao.classList.add('bot2');
+        
+                containerBotao.appendChild(novoBotao);
+                conteudo.appendChild(containerBotao); // Agora ele ficará abaixo do novo conteúdo
+        
+                novoBotao.addEventListener('click', () => {
+                    conteudo.style.display = 'none'; 
+                    botao.style.display = 'block'; 
+                    containerBotao.remove(); // Remove o botão corretamente
+                });
+            });
+        </script>
+        
+            
             {% endblock %}

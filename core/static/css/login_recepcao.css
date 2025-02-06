@@ -3,21 +3,26 @@ body {
     background-color: #f4f4f4;
 }
 
+/* Estilização do container do login */
 .login-container {
-    position: relative;
-    width: 25%;
+    width: 30%;
     padding: 2vw;
     background-color: #fff;
     border-radius: 0.6vw;
     box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
-    top: 15vw;
+    top: 10vw;
+    margin: 0 auto; /* Centraliza */
+    margin-top: 10rem;
 }
 
+/* Título */
 h2 {
     text-align: center;
     margin-bottom: 2vw;
+    font-size: 2vw;
 }
 
+/* Formulário */
 form {
     display: flex;
     flex-direction: column;
@@ -29,33 +34,91 @@ label {
     font-size: 1.5vw;
 }
 
+/* Inputs */
 input {
     margin-bottom: 1.5vw;
-    padding: 0.7vw;
-    font-size: 1.4vw;
-    border: 0.01vw solid #ccc;
+    padding: 1vw;
+    font-size: 1.5vw;
+    border: 0.1vw solid #ccc;
     border-radius: 0.4vw;
 }
 
+/* Botão */
 button {
-    padding: 0.9vw;
+    padding: 1vw;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 0.4vw;
     cursor: pointer;
+    font-size: 1.5vw;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
+/* Mensagens de erro */
 .messages {
     margin-top: 1.5vw;
     color: red;
     text-align: center;
 }
 
+/* 🔹 Responsividade 🔹 */
 footer{
-    margin-top: 20vw;
+    margin-top: 6rem;
+}
+/* Telas médias (até 900px) */
+@media (max-width: 900px) {
+    .login-container {
+        width: 50%;
+        padding: 4vw;
+        top: 5vw;
+    }
+
+    h2 {
+        font-size: 3vw;
+    }
+
+    label {
+        font-size: 2.5vw;
+    }
+
+    input {
+        font-size: 2vw;
+        padding: 1.5vw;
+    }
+
+    button {
+        font-size: 2vw;
+        padding: 1.5vw;
+    }
+}
+
+/* Telas pequenas (até 600px) */
+@media (max-width: 600px) {
+    .login-container {
+        width: 80%;
+        padding: 5vw;
+        top: 3vw;
+    }
+
+    h2 {
+        font-size: 4vw;
+    }
+
+    label {
+        font-size: 3vw;
+    }
+
+    input {
+        font-size: 2.5vw;
+        padding: 2vw;
+    }
+
+    button {
+        font-size: 2.5vw;
+        padding: 2vw;
+    }
 }
